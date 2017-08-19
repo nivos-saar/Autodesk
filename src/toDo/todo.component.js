@@ -1,9 +1,13 @@
-﻿import React from 'react'
-import TasksList from '../tasks/tasksList.component'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import TaskForm from '../tasks/taskForm.component'
-import EditTaskForm from '../tasks/editTaskForm.component'
+﻿import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import undoable from 'redux-undo';
+// Components
+import TaskForm from '../tasks/taskForm.component';
+import EditTaskForm from '../tasks/editTaskForm.component';
+import TasksList from '../tasks/tasksList.component';
+// Actions.
+import { addTodo, toggleTodo, editTodo, setEditTaskId } from '../redux/actions'
 
 // Main app component.
 class Todo extends React.Component {
@@ -61,15 +65,13 @@ class Todo extends React.Component {
     }
 }
 
-// Actions.
-import { addTodo, toggleTodo, editTodo, setEditTaskId } from '../redux/actions'
 
 // Props of the state.
 function stateToProps(state) {
     return {
-        tasksTodo: state.tasksTodo,
-        currentId: state.currentId,
-        taskIdToEdit: state.taskIdToEdit
+        tasksTodo: state.todo.tasksTodo,
+        currentId: state.todo.currentId,
+        taskIdToEdit: state.todo.taskIdToEdit
     };
 }
 

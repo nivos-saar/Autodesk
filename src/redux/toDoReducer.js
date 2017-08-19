@@ -1,9 +1,9 @@
 ﻿/*
- * reducers
+ * Main app Reducer.
  */
 import { ADD_TODO, TOGGLE_TODO, EDIT_TODO, SET_EDIT_TASK_ID } from './actions'
 // Initializing the state with some defualt tasks, so you'll enjoy from the moment you'll load the app. There's nothig like good UX.
-const initialState = {
+const initialAppState = {
     tasksTodo: [{ id: 1, description: "niv 1", assignee: "Niv Saar", dueDate: '2017-08-18', isCompleted: false },
         { id: 2, description: "niv 2", assignee: "Daniel Gefen", dueDate: '2017-08-18', isCompleted: false },
         { id: 3, description: "niv 3", assignee: "Gal Shelef", dueDate: '2017-08-18', isCompleted: false }],
@@ -11,14 +11,13 @@ const initialState = {
     taskIdToEdit:0
 }
 
-export default function todoAppReducer(state = initialState, action) {
+const todoAppReducer = (state = initialAppState, action) => {
     switch (action.type) {
         // Add new todo item
         case ADD_TODO:
             return Object.assign({}, state, {
                 tasksTodo: [...state.tasksTodo, Object.assign({}, action.task, { id: state.currentId, isCompleted: false })],
-                currentId: state.currentId + 1,
-                taskIdToEdit: state.taskIdToEdit
+                currentId: state.currentId + 1
             })
         // Toggle the todo item (completed / not completed).
         case TOGGLE_TODO:
@@ -31,9 +30,7 @@ export default function todoAppReducer(state = initialState, action) {
                         })
                     }
                     return todo;
-                }),
-                currentId: state.currentId,
-                taskIdToEdit: state.taskIdToEdit
+                })
             });
         // Edit todo item
         case EDIT_TODO:
@@ -44,18 +41,17 @@ export default function todoAppReducer(state = initialState, action) {
                         return Object.assign({}, action.task);
                     }
                     return todo;
-                }),
-                currentId: state.currentId,
-                taskIdToEdit: state.taskIdToEdit
+                })
             });
         // Set the id with the item's id that should be edited
         case SET_EDIT_TASK_ID:
-            return {
-                tasksTodo: state.tasksTodo,
-                currentId: state.currentId,
+            return Object.assign({}, state, {
                 taskIdToEdit: action.id
-            }
+            });
         default:
             return state;
     }
 }
+
+export default todoAppReducer;
+ 

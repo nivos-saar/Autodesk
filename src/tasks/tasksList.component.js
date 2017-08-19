@@ -1,7 +1,7 @@
-﻿import React from 'react'
-import TaskItem from './taskItem.component'
-import EditTaskForm from './editTaskForm.component'
-import ReactDOM from 'react-dom'
+﻿import React from 'react';
+import TaskItem from './taskItem.component';
+import EditTaskForm from './editTaskForm.component';
+import ReactDOM from 'react-dom';
 
 export default class TasksList extends React.Component {
     render() {
