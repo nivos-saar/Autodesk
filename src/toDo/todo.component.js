@@ -15,8 +15,8 @@ class Todo extends React.Component {
         return (
             <div>
                 <h3>Task List</h3>
-                <div>
-                    <TasksList tasks={this.props.tasksTodo} toggleEditForm={this.props.toggleEditForm} toggleTask={this.props.toggleAction}
+                <div className="panel-body">
+                    <TasksList tasks={this.props.tasksTodo} toggleTask={this.props.toggleAction}
                         setEditTaskId={this.props.setEditTaskId} taskEditorModalId={taskEditorModalId}/>
                     <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#addTaskModal">Add new Task</button>
                 </div>
@@ -37,7 +37,6 @@ class Todo extends React.Component {
                                 <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                         </div>
-
                     </div>
                 </div>
 
@@ -55,7 +54,6 @@ class Todo extends React.Component {
                                 <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -64,16 +62,14 @@ class Todo extends React.Component {
 }
 
 // Actions.
-import { addTodo, toggleTodo, editTodo, toggleEditForm, toggleAddForm, setEditTaskId } from '../redux/actions'
+import { addTodo, toggleTodo, editTodo, setEditTaskId } from '../redux/actions'
 
 // Props of the state.
 function stateToProps(state) {
     return {
         tasksTodo: state.tasksTodo,
         currentId: state.currentId,
-        taskIdToEdit: state.taskIdToEdit,
-        showEditTaskForm: state.showEditTaskForm,
-        showAddNewTaskForm: state.showAddNewTaskForm
+        taskIdToEdit: state.taskIdToEdit
     };
 }
 
@@ -83,9 +79,7 @@ function dispatchToProps(dispatch) {
         addAction: addTodo,
         toggleAction: toggleTodo,
         editAction: editTodo,
-        setEditTaskId: setEditTaskId,
-        toggleEditAction: toggleEditForm,
-        toggleAddAction: toggleAddForm
+        setEditTaskId: setEditTaskId
     }, dispatch);
 }
 

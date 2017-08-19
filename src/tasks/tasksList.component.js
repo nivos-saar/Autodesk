@@ -10,7 +10,7 @@ export default class TasksList extends React.Component {
             .filter((task) => { return !task.isCompleted })
             // Map them to a component.
             .map((task) => {
-                return < TaskItem task={task} key={task.id} toggleEditForm={this.props.toggleEditForm} toggleTask={this.props.toggleTask}
+                return < TaskItem task={task} key={task.id} toggleTask={this.props.toggleTask}
                     setEditTaskId={this.props.setEditTaskId} taskEditorModalId={this.props.taskEditorModalId} />
             });
         let tasksCompleted = this.props.tasks

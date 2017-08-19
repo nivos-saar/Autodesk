@@ -1,8 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src\\tasks"
+    "\\dist",
+    "\\src",
+    "\\src\\redux",
+    "\\src\\tasks",
+    "\\src\\toDo"
   ],
-  "SelectedNode": "\\src",
+  "SelectedNode": "\\src\\tasks\\taskForm.component.js",
   "PreviewInSolutionExplorer": false
 }

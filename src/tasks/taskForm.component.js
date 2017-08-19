@@ -9,8 +9,8 @@ export default class TaskForm extends React.Component {
     }
     
     render() {
-        const assignees = this.state.assignees.map((assignee) => {
-            return <option className="divider"> {assignee} </option>
+        const assignees = this.state.assignees.map((assignee, index) => {
+            return <option className="divider" key={index}> {assignee} </option>
         });
 
         return (
@@ -39,5 +39,7 @@ export default class TaskForm extends React.Component {
         e.preventDefault();
         const task = { description: this.refs.description.value, assignee: this.refs.assignee.value, dueDate: this.refs.dueDate.value }
         this.props.addAction(task);
+        // After submiting the new task, set all the form values to null.
+        Object.keys(this.refs).forEach((ref) => { this.refs[ref].value = null });
     }
 }
